@@ -21,22 +21,14 @@ null_ls.setup({
       filetypes = {
         "javascript",
         "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "vue",
         "css",
         "scss",
         "less",
         "html",
         "json",
-        "yaml",
-        "graphql",
       },
       prefer_local = "node_modules/.bin",
     }),
-    -- rustfmt
-    -- rustup component add rustfmt
-    formatting.rustfmt,
     -- Python
     -- pip install black
     -- asdf reshim python

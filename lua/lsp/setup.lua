@@ -15,12 +15,9 @@ local servers = {
   pyright = require("lsp.config.pyright"),
   html = require("lsp.config.html"),
   cssls = require("lsp.config.css"),
-  emmet_ls = require("lsp.config.emmet"),
   jsonls = require("lsp.config.json"),
-  tsserver = require("lsp.config.ts"),
-  rust_analyzer = require("lsp.config.rust"),
-  yamlls = require("lsp.config.yamlls"),
-  -- remark_ls = require("lsp.config.markdown"),
+  clangd = require("lsp.config.clangd"),
+  remark_ls = require("lsp.config.markdown"),
 }
 
 for name, config in pairs(servers) do

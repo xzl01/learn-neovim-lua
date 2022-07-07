@@ -73,7 +73,6 @@ packer.startup({
     -- indent-blankline
     use("lukas-reineke/indent-blankline.nvim")
     --------------------- LSP --------------------
-    -- use({ "williamboman/nvim-lsp-installer", commit = "36b44679f7cc73968dbb3b09246798a19f7c14e0" })
     use({ "williamboman/nvim-lsp-installer" })
     -- Lspconfig
     use({ "neovim/nvim-lspconfig" })
@@ -96,14 +95,10 @@ packer.startup({
     -- 代码格式化
     use("mhartington/formatter.nvim")
     use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
-    -- TypeScript 增强
-    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = "nvim-lua/plenary.nvim" })
     -- Lua 增强
     use("folke/lua-dev.nvim")
     -- JSON 增强
     use("b0o/schemastore.nvim")
-    -- Rust 增强
-    use("simrat39/rust-tools.nvim")
     --------------------- colorschemes --------------------
     -- tokyonight
     use("folke/tokyonight.nvim")
@@ -133,8 +128,6 @@ packer.startup({
     use("windwp/nvim-autopairs")
     -- git
     use({ "lewis6991/gitsigns.nvim" })
-    -- vimspector
-    use("puremourning/vimspector")
     ----------------------------------------------
     use("mfussenegger/nvim-dap")
     use("theHamsta/nvim-dap-virtual-text")
@@ -148,11 +141,6 @@ packer.startup({
     end
   end,
   config = {
-    -- 锁定插件版本在snapshots目录
-    snapshot_path = require("packer.util").join_paths(vim.fn.stdpath("config"), "snapshots"),
-    -- 这里锁定插件版本在v1，不会继续更新插件
-    snapshot = "v1",
-
     -- 最大并发数
     max_jobs = 16,
     -- 自定义源
@@ -170,15 +158,3 @@ packer.startup({
     -- },
   },
 })
-
--- 每次保存 plugins.lua 自动安装插件
--- move to autocmds.lua
--- pcall(
---   vim.cmd,
---   [[
--- augroup packer_user_config
--- autocmd!
--- autocmd BufWritePost plugins.lua source <afile> | PackerSync
--- augroup end
--- ]]
--- )

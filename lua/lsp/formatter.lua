@@ -20,16 +20,6 @@ formatter.setup({
         }
       end,
     },
-    rust = {
-      -- Rustfmt
-      function()
-        return {
-          exe = "rustfmt",
-          args = { "--emit=stdout" },
-          stdin = true,
-        }
-      end,
-    },
     javascript = {
       -- prettier
       function()
@@ -43,13 +33,3 @@ formatter.setup({
   },
 })
 
--- format on save
-vim.api.nvim_exec(
-  [[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.js,*.rs,*.lua FormatWrite
-augroup END
-]],
-  true
-)
