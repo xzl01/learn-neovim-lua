@@ -7,8 +7,8 @@
 --   command_mode = "c",
 
 -- leader key 为空
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ";"
+vim.g.maplocalleader = ";"
 
 local opt = {
   noremap = true,
@@ -19,30 +19,30 @@ local opt = {
 local map = vim.api.nvim_set_keymap
 
 -- $跳到行尾不带空格 (交换$ 和 g_)
-map("v", "$", "g_", opt)
-map("v", "g_", "$", opt)
-map("n", "$", "g_", opt)
-map("n", "g_", "$", opt)
+-- map("v", "$", "g_", opt)
+-- map("v", "g_", "$", opt)
+-- map("n", "$", "g_", opt)
+-- map("n", "g_", "$", opt)
 
 -- 命令行下 Ctrl+j/k  上一个下一个
-map("c", "<C-j>", "<C-n>", { noremap = false })
-map("c", "<C-k>", "<C-p>", { noremap = false })
+-- map("c", "<C-j>", "<C-n>", { noremap = false })
+-- map("c", "<C-k>", "<C-p>", { noremap = false })
 
-map("n", "<leader>w", ":w<CR>", opt)
-map("n", "<leader>wq", ":wqa!<CR>", opt)
+-- map("n", "<leader>w", ":w<CR>", opt)
+-- map("n", "<leader>wq", ":wqa!<CR>", opt)
 
 -- fix :set wrap
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- 上下滚动浏览
-map("n", "<C-j>", "5j", opt)
-map("n", "<C-k>", "5k", opt)
-map("v", "<C-j>", "5j", opt)
-map("v", "<C-k>", "5k", opt)
+map("n", "<C-j>", "10j", opt)
+map("n", "<C-k>", "10k", opt)
+map("v", "<C-j>", "10j", opt)
+map("v", "<C-k>", "10k", opt)
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
-map("n", "<C-u>", "10k", opt)
-map("n", "<C-d>", "10j", opt)
+-- map("n", "<C-u>", "20k", opt)
+-- map("n", "<C-d>", "20j", opt)
 
 -- magic search
 map("n", "/", "/\\v", { noremap = true, silent = false })
@@ -60,11 +60,11 @@ map("v", "p", '"_dP', opt)
 
 -- 退出
 map("n", "qq", ":q!<CR>", opt)
-map("n", "<leader>q", ":qa!<CR>", opt)
+-- map("n", "<leader>q", ":qa!<CR>", opt)
 
 -- insert 模式下，跳到行首行尾
--- map("i", "<C-h>", "<ESC>I", opt)
--- map("i", "<C-l>", "<ESC>A", opt)
+map("i", "<C-h>", "<ESC>I", opt)
+map("i", "<C-l>", "<ESC>A", opt)
 
 ------------------------------------------------------------------
 -- windows 分屏快捷键
@@ -123,14 +123,14 @@ map("n", "Z", ":foldopen<CR>", opt)
 
 -- nvim-tree
 map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
-map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
+-- map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
 -- bufferline
 -- 左右Tab切换
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 -- "moll/vim-bbye" 关闭当前 buffer
-map("n", "<leader>bc", ":Bdelete!<CR>", opt)
-map("n", "<C-w>", ":Bdelete!<CR>", opt)
+-- map("n", "<leader>bc", ":Bdelete!<CR>", opt)
+map("n", "<C-c>", ":Bdelete!<CR>", opt)
 -- 关闭左/右侧标签页
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
@@ -141,26 +141,26 @@ map("n", "<leader>bp", ":BufferLinePickClose<CR>", opt)
 
 -- Telescope
 map("n", "<C-p>", ":Telescope find_files<CR>", opt)
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+map("n", "<C-d>", ":Telescope live_grep<CR>", opt)
 -- Telescope 列表中 插入模式快捷键
-pluginKeys.telescopeList = {
-  i = {
-    -- 上下移动
-    ["<C-j>"] = "move_selection_next",
-    ["<C-k>"] = "move_selection_previous",
-    ["<C-n>"] = "move_selection_next",
-    ["<C-p>"] = "move_selection_previous",
-    -- 历史记录
-    ["<Down>"] = "cycle_history_next",
-    ["<Up>"] = "cycle_history_prev",
-    -- 关闭窗口
-    -- ["<esc>"] = actions.close,
-    ["<C-c>"] = "close",
-    -- 预览窗口上下滚动
-    ["<C-u>"] = "preview_scrolling_up",
-    ["<C-d>"] = "preview_scrolling_down",
-  },
-}
+-- pluginKeys.telescopeList = {
+--   i = {
+--     -- 上下移动
+--     ["<C-j>"] = "move_selection_next",
+--     ["<C-k>"] = "move_selection_previous",
+--     ["<C-n>"] = "move_selection_next",
+--     ["<C-p>"] = "move_selection_previous",
+--     -- 历史记录
+--     ["<Down>"] = "cycle_history_next",
+--     ["<Up>"] = "cycle_history_prev",
+--     -- 关闭窗口
+--     -- ["<esc>"] = actions.close,
+--     ["<C-c>"] = "close",
+--     -- 预览窗口上下滚动
+--     ["<C-f>"] = "preview_scrolling_up",
+--     ["<C-b>"] = "preview_scrolling_down",
+--   },
+-- }
 
 -- 代码注释插件
 -- see ./lua/plugin-config/comment.lua
@@ -232,13 +232,6 @@ pluginKeys.mapLSP = function(mapbuf)
   -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
 end
 
--- typescript 快捷键
-pluginKeys.mapTsLSP = function(mapbuf)
-  mapbuf("n", "gs", ":TSLspOrganize<CR>", opt)
-  mapbuf("n", "gR", ":TSLspRenameFile<CR>", opt)
-  mapbuf("n", "gi", ":TSLspImportAll<CR>", opt)
-end
-
 -- nvim-dap
 pluginKeys.mapDAP = function()
   -- 开始
@@ -269,21 +262,21 @@ pluginKeys.mapDAP = function()
 end
 
 -- vimspector
-pluginKeys.mapVimspector = function()
-  -- 开始
-  map("n", "<leader>dd", ":call vimspector#Launch()<CR>", opt)
-  -- 结束
-  map("n", "<Leader>de", ":call vimspector#Reset()<CR>", opt)
-  -- 继续
-  map("n", "<Leader>dc", ":call vimspector#Continue()<CR>", opt)
-  -- 设置断点
-  map("n", "<Leader>dt", ":call vimspector#ToggleBreakpoint()<CR>", opt)
-  map("n", "<Leader>dT", ":call vimspector#ClearBreakpoints()<CR>", opt)
-  --  stepOver, stepOut, stepInto
-  map("n", "<leader>dj", "<Plug>VimspectorStepOver", opt)
-  map("n", "<leader>dk", "<Plug>VimspectorStepOut", opt)
-  map("n", "<leader>dl", "<Plug>VimspectorStepInto", opt)
-end
+-- pluginKeys.mapVimspector = function()
+--   -- 开始
+--   map("n", "<leader>dd", ":call vimspector#Launch()<CR>", opt)
+--   -- 结束
+--   map("n", "<Leader>de", ":call vimspector#Reset()<CR>", opt)
+--   -- 继续
+--   map("n", "<Leader>dc", ":call vimspector#Continue()<CR>", opt)
+--   -- 设置断点
+--   map("n", "<Leader>dt", ":call vimspector#ToggleBreakpoint()<CR>", opt)
+--   map("n", "<Leader>dT", ":call vimspector#ClearBreakpoints()<CR>", opt)
+--   --  stepOver, stepOut, stepInto
+--   map("n", "<leader>dj", "<Plug>VimspectorStepOver", opt)
+--   map("n", "<leader>dk", "<Plug>VimspectorStepOut", opt)
+--   map("n", "<leader>dl", "<Plug>VimspectorStepInto", opt)
+-- end
 
 -- nvim-cmp 自动补全
 pluginKeys.cmp = function(cmp)
@@ -297,9 +290,9 @@ pluginKeys.cmp = function(cmp)
 
   return {
     -- 上一个
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
+    -- ["<C-k>"] = cmp.mapping.select_prev_item(),
     -- 下一个
-    ["<C-j>"] = cmp.mapping.select_next_item(),
+    -- ["<C-j>"] = cmp.mapping.select_next_item(),
     -- 出现补全
     ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     -- 取消

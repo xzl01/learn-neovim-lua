@@ -26,6 +26,7 @@ null_ls.setup({
         "less",
         "html",
         "json",
+        "clangd"
       },
       prefer_local = "node_modules/.bin",
     }),

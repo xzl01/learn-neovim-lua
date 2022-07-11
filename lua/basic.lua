@@ -12,8 +12,8 @@ vim.wo.cursorline = true
 -- 显示左侧图标指示列
 vim.wo.signcolumn = "yes"
 -- 右侧参考线，超过表示代码太长了，考虑换行
-vim.wo.colorcolumn = "80"
--- 缩进2个空格等于一个Tab
+--vim.wo.colorcolumn = "80"
+-- 缩进4个空格等于一个Tab
 vim.o.tabstop = 4
 vim.bo.tabstop = 4
 vim.o.softtabstop = 4
@@ -73,7 +73,7 @@ vim.o.listchars = "space:·,tab:··"
 vim.o.wildmenu = true
 -- Dont' pass messages to |ins-completin menu|
 vim.o.shortmess = vim.o.shortmess .. "c"
--- 补全最多显示10行
+-- 补全最多显示8行
 vim.o.pumheight = 8
 -- 永远显示 tabline
 vim.o.showtabline = 2
