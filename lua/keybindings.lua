@@ -139,6 +139,9 @@ map("n", "<leader>bo", ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>", opt)
 -- 关闭选中标签页
 map("n", "<leader>bp", ":BufferLinePickClose<CR>", opt)
 
+-- whitespace
+map("n", "<C-t>", ":StripTrailingWhitespace<CR>", opt)
+
 -- Telescope
 map("n", "<C-p>", ":Telescope<CR>", opt)
 -- Telescope 列表中 插入模式快捷键

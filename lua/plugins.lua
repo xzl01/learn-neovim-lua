@@ -136,6 +136,7 @@ packer.startup({
     -- use("jbyuki/one-small-step-for-vimkind")
 
     use("j-hui/fidget.nvim")
+    use({'jdhao/whitespace.nvim', event = 'VimEnter'})
     if paccker_bootstrap then
       packer.sync()
     end
