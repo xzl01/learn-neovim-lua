@@ -26,7 +26,7 @@ lualine.setup({
     lualine_c = {
       "filename",
       {
-        "lsp_progress",
+        -- "lsp_progress",
         spinner_symbols = { " ", " ", " ", " ", " ", " " },
       },
     },
