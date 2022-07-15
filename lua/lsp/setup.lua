@@ -17,7 +17,7 @@ local servers = {
   cssls = require("lsp.config.css"),
   jsonls = require("lsp.config.json"),
   clangd = require("lsp.config.clangd"),
-  remark_ls = require("lsp.config.markdown"),
+  -- remark_ls = require("lsp.config.markdown"),
 }
 
 for name, config in pairs(servers) do
