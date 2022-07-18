@@ -17,6 +17,7 @@ local servers = {
   cssls = require("lsp.config.css"),
   jsonls = require("lsp.config.json"),
   clangd = require("lsp.config.clangd"),
+  cmake = require("lsp.config.cmake"),
   -- remark_ls = require("lsp.config.markdown"),
 }
 
