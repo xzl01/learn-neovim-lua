@@ -18,31 +18,9 @@ local opt = {
 -- 本地变量
 local map = vim.api.nvim_set_keymap
 
--- $跳到行尾不带空格 (交换$ 和 g_)
--- map("v", "$", "g_", opt)
--- map("v", "g_", "$", opt)
--- map("n", "$", "g_", opt)
--- map("n", "g_", "$", opt)
-
--- 命令行下 Ctrl+j/k  上一个下一个
--- map("c", "<C-j>", "<C-n>", { noremap = false })
--- map("c", "<C-k>", "<C-p>", { noremap = false })
-
--- map("n", "<leader>w", ":w<CR>", opt)
--- map("n", "<leader>wq", ":wqa!<CR>", opt)
-
 -- fix :set wrap
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-
--- 上下滚动浏览
-map("n", "<C-j>", "10j", opt)
-map("n", "<C-k>", "10k", opt)
-map("v", "<C-j>", "10j", opt)
-map("v", "<C-k>", "10k", opt)
--- ctrl u / ctrl + d  只移动9行，默认移动半屏
--- map("n", "<C-u>", "20k", opt)
--- map("n", "<C-d>", "20j", opt)
 
 -- magic search
 map("n", "/", "/\\v", { noremap = true, silent = false })
@@ -109,10 +87,6 @@ map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
 map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
 map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
 map("t", "<A-l>", [[ <C-\><C-N><C-w>l ]], opt)
-map("t", "<leader>h", [[ <C-\><C-N><C-w>h ]], opt)
-map("t", "<leader>j", [[ <C-\><C-N><C-w>j ]], opt)
-map("t", "<leader>k", [[ <C-\><C-N><C-w>k ]], opt)
-map("t", "<leader>l", [[ <C-\><C-N><C-w>l ]], opt)
 --------------------------------------------------------------------
 -- 插件快捷键
 local pluginKeys = {}
