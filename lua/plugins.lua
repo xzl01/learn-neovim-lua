@@ -130,7 +130,6 @@ packer.startup({
 
     use("j-hui/fidget.nvim")
     use({'jdhao/whitespace.nvim', event = 'VimEnter'})
-    use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
     if paccker_bootstrap then
       packer.sync()
     end
