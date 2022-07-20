@@ -81,5 +81,6 @@ vim.o.showtabline = 2
 vim.o.showmode = false
 -- 配置剪切板
 vim.opt.clipboard = "unnamedplus"
+-- 使用filetype
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0

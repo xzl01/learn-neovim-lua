@@ -18,7 +18,6 @@ require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
 require("plugin-config.indent-blankline")
 require("plugin-config.toggleterm")
-require("plugin-config.surround")
 require("plugin-config.comment")
 require("plugin-config.nvim-autopairs")
 require("plugin-config.fidget")
@@ -28,10 +27,5 @@ require("lsp.cmp")
 require("lsp.ui")
 -- 格式化
 require("lsp.formatter")
--- require("lsp.null-ls")
 -- DAP
--- require("dap.vimspector")
 require("dap.nvim-dap")
--- utils
--- 复制到windows剪贴板
--- require('utils.fix-yank')

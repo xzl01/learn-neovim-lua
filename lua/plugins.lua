@@ -51,7 +51,6 @@ packer.startup({
       "nvim-lualine/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons" },
     })
-    -- use("arkav/lualine-lsp-progress")
     -- telescope
     use({
       "nvim-telescope/telescope.nvim",
@@ -94,7 +93,7 @@ packer.startup({
     use("tami5/lspsaga.nvim")
     -- 代码格式化
     use("mhartington/formatter.nvim")
-    use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+    -- use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
     -- Lua 增强
     use("folke/lua-dev.nvim")
     -- JSON 增强
@@ -109,8 +108,6 @@ packer.startup({
       "ellisonleao/gruvbox.nvim",
       requires = { "rktjmp/lush.nvim" },
     })
-    -- zephyr
-    -- use("glepnir/zephyr-nvim")
     -- nord
     use("shaunsingh/nord.nvim")
     -- onedark
@@ -120,8 +117,6 @@ packer.startup({
 
     -------------------------------------------------------
     use({ "akinsho/toggleterm.nvim" })
-    -- surround
-    use("ur4ltz/surround.nvim")
     -- Comment
     use("numToStr/Comment.nvim")
     -- nvim-autopairs
@@ -132,11 +127,10 @@ packer.startup({
     use("mfussenegger/nvim-dap")
     use("theHamsta/nvim-dap-virtual-text")
     use("rcarriga/nvim-dap-ui")
-    -- use("Pocco81/DAPInstall.nvim")
-    -- use("jbyuki/one-small-step-for-vimkind")
 
     use("j-hui/fidget.nvim")
     use({'jdhao/whitespace.nvim', event = 'VimEnter'})
+    use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
     if paccker_bootstrap then
       packer.sync()
     end
@@ -151,11 +145,11 @@ packer.startup({
       -- default_url_format = "https://gitcode.net/mirrors/%s",
       -- default_url_format = "https://gitclone.com/github.com/%s",
     },
-    -- display = {
+    display = {
     -- 使用浮动窗口显示
-    --   open_fn = function()
-    --     return require("packer.util").float({ border = "single" })
-    --   end,
-    -- },
+      open_fn = function()
+        return require("packer.util").float({ border = "single" })
+      end,
+    },
   },
 })
