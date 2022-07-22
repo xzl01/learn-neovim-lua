@@ -11,7 +11,7 @@ nvim_tree.setup({
   disable_netrw = true,
   -- 不显示 git 状态图标
   git = {
-    enable = false,
+    enable = true,
   },
   -- project plugin 需要这样设置
   update_cwd = true,
@@ -27,11 +27,11 @@ nvim_tree.setup({
   },
   view = {
     -- 宽度
-    width = 28,
+    width = 26,
     -- 也可以 'right'
     side = "left",
     -- 隐藏根目录
-    hide_root_folder = false,
+    hide_root_folder = true,
     -- 不显示行数
     number = false,
     relativenumber = false,
@@ -45,13 +45,5 @@ nvim_tree.setup({
       -- 打开文件时关闭 tree
       quit_on_open = false,
     },
-  },
-  -- wsl install -g wsl-open
-  -- https://github.com/4U6U57/wsl-open/
-  system_open = {
-    -- mac
-    cmd = "open",
-    -- windows
-    -- cmd = "wsl-open",
-  },
+  }
 })

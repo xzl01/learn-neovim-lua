@@ -21,7 +21,7 @@ gitsigns.setup({
   numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff = true, -- Toggle with `:Gitsigns toggle_word_diff`
-  keymaps = require("keybindings").gitsigns,
+  -- keymaps = require("keybindings").gitsigns,
   watch_gitdir = {
     interval = 1000,
     follow_files = true,
