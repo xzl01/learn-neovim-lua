@@ -15,6 +15,12 @@ autocmd("BufEnter", {
   end,
 })
 
+autocmd("BufEnter", {
+    pattern = "*",
+    command = "setlocal spell",
+    group = myAutoGroup
+})
+
 -- autocmd({ "BufNewFile", "BufWritePre", "BufRead" }, {
 --   pattern = "*",
 --   group = myAutoGroup,
