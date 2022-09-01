@@ -130,6 +130,10 @@ packer.startup({
 
     use("j-hui/fidget.nvim")
     use({'jdhao/whitespace.nvim', event = 'VimEnter'})
+    -- plantuml
+    use({'tyru/open-browser.vim', ft = {'plantuml'}, event = 'BufEnter'})
+    use({'aklt/plantuml-syntax'})
+    use({'weirongxu/plantuml-previewer.vim', ft = {'plantuml'}, event = 'BufEnter'})
     if paccker_bootstrap then
       packer.sync()
     end
