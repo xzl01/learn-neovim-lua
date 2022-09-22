@@ -72,7 +72,8 @@ packer.startup({
     -- indent-blankline
     use("lukas-reineke/indent-blankline.nvim")
     --------------------- LSP --------------------
-    use({ "williamboman/nvim-lsp-installer" })
+    use { "williamboman/mason.nvim" }
+    use { "williamboman/mason-lspconfig.nvim" }
     -- Lspconfig
     use({ "neovim/nvim-lspconfig" })
     -- 补全引擎
@@ -124,16 +125,13 @@ packer.startup({
     -- git
     use({ "lewis6991/gitsigns.nvim" })
     ----------------------------------------------
-    use("mfussenegger/nvim-dap")
-    use("theHamsta/nvim-dap-virtual-text")
-    use("rcarriga/nvim-dap-ui")
-
     use("j-hui/fidget.nvim")
     use({'jdhao/whitespace.nvim', event = 'VimEnter'})
     -- plantuml
     use({'tyru/open-browser.vim', ft = {'plantuml'}, event = 'BufEnter'})
     use({'aklt/plantuml-syntax'})
-    use({'weirongxu/plantuml-previewer.vim', ft = {'plantuml'}, event = 'BufEnter'})
+    -- use({'weirongxu/plantuml-previewer.vim', ft = {'plantuml'}, event = 'BufEnter'})
+    use{"rcarriga/nvim-notify"}
     if paccker_bootstrap then
       packer.sync()
     end

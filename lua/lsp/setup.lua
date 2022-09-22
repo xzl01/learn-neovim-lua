@@ -1,5 +1,12 @@
 -- local lsp_installer = require("nvim-lsp-installer")
-require("nvim-lsp-installer").setup({
+require("mason").setup {
+    ui = {
+        icons = {
+            package_installed = "✓"
+        }
+    }
+}
+require("mason-lspconfig").setup({
   -- 自动安装 Language Servers
   automatic_installation = true,
 })
@@ -18,6 +25,7 @@ local servers = {
   jsonls = require("lsp.config.json"),
   clangd = require("lsp.config.clangd"),
   cmake = require("lsp.config.cmake"),
+  rust_analyzer = require("lsp.config.rust"),
   -- remark_ls = require("lsp.config.markdown"),
 }
 

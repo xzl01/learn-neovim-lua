@@ -26,7 +26,3 @@ require("plugin-config.gitsigns")
 require("lsp.setup")
 require("lsp.cmp")
 require("lsp.ui")
--- 格式化
--- require("lsp.formatter")
--- DAP
-require("dap.nvim-dap")
