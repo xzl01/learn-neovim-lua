@@ -22,6 +22,7 @@ require("plugin-config.comment")
 require("plugin-config.nvim-autopairs")
 require("plugin-config.fidget")
 require("plugin-config.gitsigns")
+require("plugin-config.todo-comments")
 -- 内置LSP
 require("lsp.setup")
 require("lsp.cmp")

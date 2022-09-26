@@ -132,6 +132,10 @@ packer.startup({
     use({'aklt/plantuml-syntax'})
     -- use({'weirongxu/plantuml-previewer.vim', ft = {'plantuml'}, event = 'BufEnter'})
     use{"rcarriga/nvim-notify"}
+    use({
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim"
+    })
     if paccker_bootstrap then
       packer.sync()
     end
