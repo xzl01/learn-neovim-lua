@@ -19,8 +19,8 @@ local opt = {
 local map = vim.api.nvim_set_keymap
 
 -- fix :set wrap
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- todo-comments
 vim.keymap.set("n", "]t", function()
@@ -45,8 +45,8 @@ map("v", "/", "/\\v", { noremap = true, silent = false })
 map("v", "<", "<gv", opt)
 map("v", ">", ">gv", opt)
 -- 上下移动选中文本
-map("v", "J", ":move '>+1<CR>gv-gv", opt)
-map("v", "K", ":move '<-2<CR>gv-gv", opt)
+map("v", "<C-Down>", ":move '>+1<CR>gv-gv", opt)
+map("v", "<C-Up>", ":move '<-2<CR>gv-gv", opt)
 
 -- 在visual mode 里粘贴不要复制
 map("v", "p", '"_dP', opt)
@@ -56,8 +56,8 @@ map("n", "qq", ":q!<CR>", opt)
 -- map("n", "<leader>q", ":qa!<CR>", opt)
 
 -- insert 模式下，跳到行首行尾
-map("i", "<C-h>", "<ESC>I", opt)
-map("i", "<C-l>", "<ESC>A", opt)
+map("i", "<C-Left>", "<ESC>I", opt)
+map("i", "<C-Right>", "<ESC>A", opt)
 
 ------------------------------------------------------------------
 -- windows 分屏快捷键
@@ -75,33 +75,9 @@ map("n", "<A-Left>", "<C-w>h", opt)
 map("n", "<A-Down>", "<C-w>j", opt)
 map("n", "<A-Up>", "<C-w>k", opt)
 map("n", "<A-Right>", "<C-w>l", opt)
--- <leader> + hjkl 窗口之间跳转
--- map("n", "<leader>h", "<C-w>h", opt)
--- map("n", "<leader>j", "<C-w>j", opt)
--- map("n", "<leader>k", "<C-w>k", opt)
--- map("n", "<leader>l", "<C-w>l", opt)
--- 左右比例控制
-map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
-map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
-map("n", "s,", ":vertical resize -10<CR>", opt)
-map("n", "s.", ":vertical resize +10<CR>", opt)
--- 上下比例
-map("n", "sj", ":resize +10<CR>", opt)
-map("n", "sk", ":resize -10<CR>", opt)
-map("n", "<C-Down>", ":resize +2<CR>", opt)
-map("n", "<C-Up>", ":resize -2<CR>", opt)
 -- 相等比例
 map("n", "s=", "<C-w>=", opt)
 
--- Terminal相关
-map("n", "st", ":sp | terminal<CR>", opt)
-map("n", "stv", ":vsp | terminal<CR>", opt)
--- Esc 回 Normal 模式
-map("t", "<Esc>", "<C-\\><C-n>", opt)
-map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
-map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
-map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
-map("t", "<A-l>", [[ <C-\><C-N><C-w>l ]], opt)
 --------------------------------------------------------------------
 -- 插件快捷键
 local pluginKeys = {}
@@ -345,10 +321,10 @@ end
 -- 特殊lazygit 窗口，需要安装lazygit
 -- <leader>tg lazygit
 pluginKeys.mapToggleTerm = function(toggleterm)
-  vim.keymap.set({ "n", "t" }, "<leader>ta", toggleterm.toggleA)
-  vim.keymap.set({ "n", "t" }, "<leader>tb", toggleterm.toggleB)
-  vim.keymap.set({ "n", "t" }, "<leader>tc", toggleterm.toggleC)
-  vim.keymap.set({ "n", "t" }, "<leader>tg", toggleterm.toggleG)
+  vim.keymap.set({ "n", "t" }, "tt", toggleterm.toggleA)
+  vim.keymap.set({ "n", "t" }, "tr", toggleterm.toggleB)
+  vim.keymap.set({ "n", "t" }, "td", toggleterm.toggleC)
+  vim.keymap.set({ "n", "t" }, "tg", toggleterm.toggleG)
 end
 
 -- gitsigns
