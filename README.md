@@ -5,18 +5,19 @@
 本项目在保持插件原有快捷键配置的同时，尽量进行更加人性化的配置。
 
 ## 目录结构说明
+
 .<br>
-├── filetype.lua                // 使用lua的文件类型检测，加载速度更快，效率更高<br>
-├── init.lua                    // 所有配置的入口<br>
-├── LICENSE                     // 本项目使用 MIT 协议<br>
-├── lua                         // 存放所有配置文件的目录<br>
-│  ├── autocmds.lua             // 设置自动命令<br>
-│  ├── basic.lua                // 基础设置<br>
-│  ├── colorscheme.lua          // 主题设置<br>
-│  ├── keybindings.lua          // 快捷键绑定<br>
-│  ├── lsp                      // lsp 相关设置<br>
-│  │  ├── cmp.lua               // 智能补全设置<br>
-│  │  ├── config                // lsp 各语言设置<br>
+├── filetype.lua&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; // 使用lua的文件类型检测，加载速度更快，效率更高<br>
+├── init.lua&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// 所有配置的入口<br>
+├── LICENSE&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// 本项目使用 MIT 协议<br>
+├── lua&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// 存放所有配置文件的目录<br>
+│  ├── autocmds.lua &emsp;&emsp;&emsp;&emsp;&emsp;// 设置自动命令<br>
+│  ├── basic.lua&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// 基础设置<br>
+│  ├── colorscheme.lua&emsp;&emsp;&emsp;&emsp;// 主题设置<br>
+│  ├── keybindings.lua &emsp;&emsp;&emsp;&emsp;// 快捷键绑定<br>
+│  ├── lsp&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// lsp 相关设置<br>
+│  │  ├── cmp.lua&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// 智能补全设置<br>
+│  │  ├── config&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// lsp 各语言设置<br>
 │  │  │  ├── bash.lua<br>
 │  │  │  ├── clangd.lua<br>
 │  │  │  ├── cmake.lua<br>
@@ -27,9 +28,9 @@
 │  │  │  ├── markdown.lua<br>
 │  │  │  ├── pyright.lua<br>
 │  │  │  └── rust.lua<br>
-│  │  ├── setup.lua             // lsp 安装设置<br>
-│  │  └── ui.lua                // lsp ui 设置<br>
-│  ├── plugin-config            // nvim 各插件设置<br>
+│  │  ├── setup.lua&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// lsp 安装设置<br>
+│  │  └── ui.lua&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// lsp ui 设置<br>
+│  ├── plugin-config&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// nvim 各插件设置<br>
 │  │  ├── bufferline.lua<br>
 │  │  ├── comment.lua<br>
 │  │  ├── dashboard.lua<br>
@@ -45,11 +46,11 @@
 │  │  ├── telescope.lua<br>
 │  │  ├── todo-comments.lua<br>
 │  │  └── toggleterm.lua<br>
-│  ├── plugins.lua               // 要安装哪些插件，可以在此设置<br>
-│  └── utils                     // 通用设置<br>
+│  ├── plugins.lua&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// 要安装哪些插件，可以在此设置<br>
+│  └── utils&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// 通用设置<br>
 │     ├── change-colorscheme.lua<br>
 │     └── global.lua<br>
-└── README.md                    // 本文件
+└── README.md&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// 本文件
 
 ## 快捷键绑定说明
 
