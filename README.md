@@ -1,65 +1,105 @@
-## 📜 Neovim 配置实战：从 0 到 1 打造自己的 IDE
+# 将 Neovim 打造成为自己的 IDE
 
-《学习 Neovim 全 lua 配置》已经在稀土掘金专业编辑的指点下完全重写。
+本项目配置参考[learn-neovim-lua](https://github.com/nshen/learn-neovim-lua)，但大部分快捷键经过重设（因为本人不喜欢快捷键被重度修改，对新手不够友好），由于本人主要做 C++ 开发工作，所以本项目完全适用 C++ 开发场景。
 
-新名字是：[《Neovim 配置实战：从 0 到 1 打造自己的 IDE》](https://juejin.cn/book/7051157342770954277)
+本项目在保持插件原有快捷键配置的同时，尽量进行更加人性化的配置。
 
-好消息是新版本由掘金专业把关，目录经过了优化，解释也更加详细，所有动图都重新截取了。
+## 目录结构说明
+.
+├── filetype.lua                // 使用lua的文件类型检测，加载速度更快，效率更高
+├── init.lua                    // 所有配置的入口
+├── LICENSE                     // 本项目使用 MIT 协议
+├── lua                         // 存放所有配置文件的目录
+│  ├── autocmds.lua             // 设置自动命令
+│  ├── basic.lua                // 基础设置
+│  ├── colorscheme.lua          // 主题设置
+│  ├── keybindings.lua          // 快捷键绑定
+│  ├── lsp                      // lsp 相关设置
+│  │  ├── cmp.lua               // 智能补全设置
+│  │  ├── config                // lsp 各语言设置
+│  │  │  ├── bash.lua
+│  │  │  ├── clangd.lua
+│  │  │  ├── cmake.lua
+│  │  │  ├── css.lua
+│  │  │  ├── html.lua
+│  │  │  ├── json.lua
+│  │  │  ├── lua.lua
+│  │  │  ├── markdown.lua
+│  │  │  ├── pyright.lua
+│  │  │  └── rust.lua
+│  │  ├── setup.lua             // lsp 安装设置
+│  │  └── ui.lua                // lsp ui 设置
+│  ├── plugin-config            // nvim 各插件设置
+│  │  ├── bufferline.lua
+│  │  ├── comment.lua
+│  │  ├── dashboard.lua
+│  │  ├── fidget.lua
+│  │  ├── gitsigns.lua
+│  │  ├── indent-blankline.lua
+│  │  ├── lualine.lua
+│  │  ├── nvim-autopairs.lua
+│  │  ├── nvim-notify.lua
+│  │  ├── nvim-tree.lua
+│  │  ├── nvim-treesitter.lua
+│  │  ├── project.lua
+│  │  ├── telescope.lua
+│  │  ├── todo-comments.lua
+│  │  └── toggleterm.lua
+│  ├── plugins.lua               // 要安装哪些插件，可以在此设置
+│  └── utils                     // 通用设置
+│     ├── change-colorscheme.lua
+│     └── global.lua
+└── README.md                    // 本文件
 
-内容翻新的同时代码也进行了比较大幅的改动，文章质量肯定更高了。
+## 快捷键绑定说明
 
-坏消息是变成了收费小册了，但价格不高，现在预售中，前 7 天是限时最低折扣可直接无脑付款，后来的朋友可以找我索取最低 7 折的折扣码。
+这里列出一些常用快捷键说明，也可以查看或修改 keybindings.lua 文件
 
-第一次写收费小册，希望大家能够少喝一杯咖啡，十几块钱支持一下。 
-
-但如果你跟我一样手头很紧的话也仍然可以查看 [旧版备份](https://github.com/nshen/learn-neovim-lua/tree/bak)，但旧版不会再更新了。
-
-## 新版购买链接
-
-[Neovim 配置实战：从 0 到 1 打造自己的 IDE](https://juejin.cn/book/7051157342770954277)
-
-下边是掘金小册介绍：
-
-![0a0f17793e35487d939955ce1ddc1ba5_tplv-k3u1fbpfcp-watermark](https://user-images.githubusercontent.com/181506/158575190-4cc79ee3-1485-45d6-a82c-6449242cbfc7.jpg)
-
-
-由于近来 VSCode 越来越臃肿，已经逐渐脱离了其高性能、轻量级的定位。而随着 Neovim 0.5+ 版本的发布，内置 LSP 的支持，让 Lua  成了编辑器的一等语言，使得古老的 VIM 编辑器变得更加现代化了。
-
-加上这些年 Windows 系统的快速发展 ，WSL2 、Windows Terminal 的推出，Windows 命令行也有了 UTF8、GPU 加速文本渲染引擎的支持，使我们有能力，也有理由转到更加轻便高效、面向未来的 Neovim 编辑器上做程序开发，提升开发效率。
-
-如果你在 Google 上搜索 "Years of Vim" ，会看到很多高手都已经用 VIM 编辑器 10 年以上了，他们都会一直维护一个属于自己独一无二的配置，彼此各不相同，通过不断地调教，使之越来越适合自己，达到了“人剑合一”的境界。
-
-学会调教  Neovim  在程序开发生涯中是非常有意义的一件事，**让编辑器适配你的习惯，而不是无限地追赶编辑器的更新，也是成为“10 倍速程序员”必经之路。**
-
-这里展示一下学完本小册后，大致的配置效果：
-
-![features2](https://user-images.githubusercontent.com/181506/158575466-2d3be027-a4a3-482f-b884-02b20f66fba3.gif)
-
-从 VSCode 转移到 Neovim 时 ，我也看了很多文档，参考了很多配置资料，尝试了很多插件，走了很多弯路，最终我对 Neovim 的配置已经完全可以满足我对代码编辑器的需求了。我把配置方法写成小册，通过对这个小册的学习，你也可以把 Neovim  配置成你希望的样子，也许跟我的完全不同。
-
-小册分为 **基建篇** 和 **代码篇**。
-
-在 **基建篇** 中，我们会先从安装 Neovim 开始，介绍配置文件位置，以及我们应该如何组织配置文件、快捷键如何设置、插件如何安装和管理。然后通过逐个介绍目前流行的插件安装方式和使用方法来补全文本编辑器所需的所有功能。
-
-基建篇完成后，你将会得到一个现代化的文本编辑器。
-
-在 **代码篇** 中，我们会补全程序开发相关的功能，包括如何实现代码高亮、什么是内置 LSP、如何配置内置 LSP、代码如何补全
-代码格式化、UI 可否美化等。之后还会专门针对前端开发和 rust 开发所必备的插件配置介绍，一步一步帮助你将手中的 Neovim 装配成 VSCode 般的开发环境。
-
-![xmind.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0540cdcdd8314d198eb79cead70442c7~tplv-k3u1fbpfcp-watermark.image?)
-
-## 你会学到什么？
-
-本小册包含大量**动图演示**，章节相对独立，参照配置每完成一章，即可立刻看到反馈效果。总的来说，你将收获：
-
-- 基于最新版本的 Neovim ，从零开始基于 Lua 搭建现代化 Neovim 开发环境。
-- 了解 Neovim 的配置原理与思路，以及完整的配套源码。
-- 最重要的是你会得到属于你的专属 Neovim 版本。
-
-![0-2.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/645c93365927495aa51f7951b5437d8c~tplv-k3u1fbpfcp-watermark.image?)
-
-## 适宜人群
-
-- 适合有一点 VIM 基础的使用者（至少知道怎么编辑文件和退出 VIM 😁）。
-- 有程序开发基础，有可以访问 Github 的网络环境，想要提升开发效率与开发体验的程序开发人员。
-- 想要系统学习 Neovim 配置，却被网上零散过时的 VIM 配置教程困扰的同学们。
+ **分类**     | **快捷键**    | **说明**                                      
+------------|------------|---------------------------------------------
+ 通用         | ;          | leader 键，vim 快捷键的一种方式，加上 leader 键和不加是两种快捷键。 
+ 通用         | qq         | normal 模式，退出                                
+ todo       | ]t         | normal 模式，下一个注释标签                           
+ todo       | [t         | normal 模式，上一个注释标签                           
+ 缩进         | <          | visual 模式，左缩进                               
+ 缩进         | >          | visual 模式，右缩进                               
+ 移动         | Ctrl+Up    | visual 模式， 向上移动选中文本                         
+ 移动         | Ctrl+Down  | visual 模式，向下移动选中文本                          
+ 通用         | Ctrl+Left  | insert 模式，光标移动到行首                           
+ 通用         | Ctrl+Right | insert 模式，光标移动到行尾                           
+ 窗口         | sv         | normal 模式，纵向分割                              
+ 窗口         | sh         | normal 模式，横向分割                              
+ 窗口         | sc         | normal 模式，关闭当前窗口                            
+ 窗口         | so         | normal 模式，关闭其他窗口                            
+ 窗口         | Alt+Left   | normal 模式，向左跳转窗口                            
+ 窗口         | Alt+Right  | normal 模式，向右跳转窗口                            
+ 窗口         | Alt+Up     | normal 模式，向上跳转窗口                            
+ 窗口         | Alt+Down   | normal 模式，向下跳转窗口                            
+ treesitter | zz         | normal 模式，折叠代码段                             
+ treesitter | Z          | normal 模式，展开代码段                             
+ tree       | Alt+m      | normal 模式，显示文件目录树                           
+ 标签         | Ctrl+Left  | normal 模式，向左切换标签页                           
+ 标签         | Ctrl+Right | normal 模式，向右切换标签页                           
+ 标签         | Ctrl+c     | normal 模式，关闭当前标签页                           
+ 空白符        | Ctrl+t     | normal 模式，删除当前文档所有尾部空白符                     
+ telescope  | Ctrl+p     | normal 模式，打开telescope                       
+ 注释         | Ctrl+/     | normal visual 模式，注释或取消注释当前行/选中行             
+ lsp        | ;rn        | normal 模式，重命名所有引用当前变量                       
+ lsp        | gd         | normal 模式，跳转到定义处                            
+ lsp        | gh         | normal 模式，预览定义                              
+ lsp        | gr         | normal 模式，查看所有引用                            
+ lsp        | gp         | normal 模式，显示当前错误信息                          
+ lsp        | gj         | normal 模式，跳转到下一条错误处                         
+ lsp        | gk         | normal 模式，跳转到上一条错误处                         
+ lsp        | gc         | normal 模式，复制当前错误到剪切板                        
+ lsp        | ;f         | normal 模式，格式化当前文档                           
+ cmp        | Tab        | insert 模式，切换到下一条补全条目                        
+ cmp        | Shift+Tab  | insert 模式，切换到上一条补全条目                        
+ terminal   | tt         | normal 模式，以悬浮形式打开终端                         
+ terminal   | tg         | normal 模式，以悬浮形式打开lazygit                    
+ git        | hd         | normal 模式，对比当前文件的修改                         
+ git        | hs         | normal 模式，暂存当前块                             
+ git        | hS         | normal 模式，暂存当前文档                            
+ git        | hr         | normal 模式，取消暂存当前块                           
+ git        | hR         | normal 模式，取消暂存当前文档                          
+ git        | td         | normal 模式，在本文档中显示已删除行

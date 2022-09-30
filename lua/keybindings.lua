@@ -33,9 +33,9 @@ end, { desc = "Previous todo comment" })
 
 -- You can also specify a list of valid jump keywords
 
-vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next({keywords = { "ERROR", "WARNING" }})
-end, { desc = "Next error/warning todo comment" })
+-- vim.keymap.set("n", "]t", function()
+--   require("todo-comments").jump_next({keywords = { "ERROR", "WARNING" }})
+-- end, { desc = "Next error/warning todo comment" })
 
 -- magic search
 map("n", "/", "/\\v", { noremap = true, silent = false })
@@ -88,46 +88,18 @@ map("n", "Z", ":foldopen<CR>", opt)
 
 -- nvim-tree
 map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
--- map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
--- bufferline
--- 左右Tab切换
+
+-- bufferline 左右Tab切换
 map("n", "<C-Left>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-Right>", ":BufferLineCycleNext<CR>", opt)
 -- "moll/vim-bbye" 关闭当前 buffer
--- map("n", "<leader>bc", ":Bdelete!<CR>", opt)
 map("n", "<C-c>", ":Bdelete!<CR>", opt)
--- 关闭左/右侧标签页
-map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
-map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
--- 关闭其他标签页
-map("n", "<leader>bo", ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>", opt)
--- 关闭选中标签页
-map("n", "<leader>bp", ":BufferLinePickClose<CR>", opt)
 
 -- whitespace
 map("n", "<C-t>", ":StripTrailingWhitespace<CR>", opt)
 
 -- Telescope
 map("n", "<C-p>", ":Telescope<CR>", opt)
--- Telescope 列表中 插入模式快捷键
--- pluginKeys.telescopeList = {
---   i = {
---     -- 上下移动
---     ["<C-j>"] = "move_selection_next",
---     ["<C-k>"] = "move_selection_previous",
---     ["<C-n>"] = "move_selection_next",
---     ["<C-p>"] = "move_selection_previous",
---     -- 历史记录
---     ["<Down>"] = "cycle_history_next",
---     ["<Up>"] = "cycle_history_prev",
---     -- 关闭窗口
---     -- ["<esc>"] = actions.close,
---     ["<C-c>"] = "close",
---     -- 预览窗口上下滚动
---     ["<C-f>"] = "preview_scrolling_up",
---     ["<C-b>"] = "preview_scrolling_down",
---   },
--- }
 
 -- 代码注释插件
 -- see ./lua/plugin-config/comment.lua
@@ -150,43 +122,18 @@ map("v", "<C-_>", "gcc", { noremap = false })
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
-  --[[
-  Lspsaga 替换 rn
   mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
-  --]]
-  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
   -- code action
-  --[[
-  Lspsaga 替换 ca
-  mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
-  --]]
-  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+  -- mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
   -- go xx
-  --[[
-    mapbuf('n', 'gd', '<cmd>Lspsaga preview_definition<CR>', opt)
-  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
-  --]]
   mapbuf("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions({ initial_mode = 'normal', })<CR>", opt)
-  --[[
-  mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
-  Lspsaga 替换 gh
-  --]]
-  mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
-  --[[
-  Lspsaga 替换 gr
-  mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
-  --]]
+  mapbuf("n", "gh", "<cmd>Lspsaga preview_definition<CR>", opt)
   mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
-  --[[
-  Lspsaga 替换 gp, gj, gk
-  mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-  mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-  mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-  --]]
   -- diagnostic
   mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
-  mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
-  mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
+  mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<CR>", opt)
+  mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opt)
+  mapbuf("n", "gc", "<cmd>Lspsaga yank_line_diagnostics<CR>", opt)
   mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
   -- 未用
   -- mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
@@ -228,23 +175,6 @@ pluginKeys.mapDAP = function()
   map("n", "<leader>dh", ":lua require'dapui'.eval()<CR>", opt)
 end
 
--- vimspector
--- pluginKeys.mapVimspector = function()
---   -- 开始
---   map("n", "<leader>dd", ":call vimspector#Launch()<CR>", opt)
---   -- 结束
---   map("n", "<Leader>de", ":call vimspector#Reset()<CR>", opt)
---   -- 继续
---   map("n", "<Leader>dc", ":call vimspector#Continue()<CR>", opt)
---   -- 设置断点
---   map("n", "<Leader>dt", ":call vimspector#ToggleBreakpoint()<CR>", opt)
---   map("n", "<Leader>dT", ":call vimspector#ClearBreakpoints()<CR>", opt)
---   --  stepOver, stepOut, stepInto
---   map("n", "<leader>dj", "<Plug>VimspectorStepOver", opt)
---   map("n", "<leader>dk", "<Plug>VimspectorStepOut", opt)
---   map("n", "<leader>dl", "<Plug>VimspectorStepInto", opt)
--- end
-
 -- nvim-cmp 自动补全
 pluginKeys.cmp = function(cmp)
   local feedkey = function(key, mode)
@@ -278,17 +208,6 @@ pluginKeys.cmp = function(cmp)
     -- 如果窗口内容太多，可以滚动
     ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    -- snippets 跳转
-    ["<C-l>"] = cmp.mapping(function(_)
-      if vim.fn["vsnip#available"](1) == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
-      end
-    end, { "i", "s" }),
-    ["<C-h>"] = cmp.mapping(function()
-      if vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
-      end
-    end, { "i", "s" }),
 
     -- super Tab
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -315,15 +234,13 @@ pluginKeys.cmp = function(cmp)
 end
 
 -- 自定义 toggleterm 3个不同类型的命令行窗口
--- <leader>ta 浮动
--- <leader>tb 右侧
--- <leader>tc 下方
+-- <leader>tt 浮动
+-- <leader>tr 右侧
+-- <leader>td 下方
 -- 特殊lazygit 窗口，需要安装lazygit
 -- <leader>tg lazygit
 pluginKeys.mapToggleTerm = function(toggleterm)
   vim.keymap.set({ "n", "t" }, "tt", toggleterm.toggleA)
-  vim.keymap.set({ "n", "t" }, "tr", toggleterm.toggleB)
-  vim.keymap.set({ "n", "t" }, "td", toggleterm.toggleC)
   vim.keymap.set({ "n", "t" }, "tg", toggleterm.toggleG)
 end
 
@@ -351,17 +268,17 @@ pluginKeys.gitsigns_on_attach = function(bufnr)
     end, {expr=true})
 
     -- Actions
-    map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
-    map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
-    map('n', '<leader>hS', gs.stage_buffer)
-    map('n', '<leader>hu', gs.undo_stage_hunk)
-    map('n', '<leader>hR', gs.reset_buffer)
-    map('n', '<leader>hp', gs.preview_hunk)
-    map('n', '<leader>hb', function() gs.blame_line{full=true} end)
-    map('n', '<leader>tb', gs.toggle_current_line_blame)
-    map('n', '<leader>hd', gs.diffthis)
-    map('n', '<leader>hD', function() gs.diffthis('~') end)
-    map('n', '<leader>td', gs.toggle_deleted)
+    map({'n', 'v'}, 'hs', ':Gitsigns stage_hunk<CR>')
+    map({'n', 'v'}, 'hr', ':Gitsigns reset_hunk<CR>')
+    map('n', 'hS', gs.stage_buffer)
+    map('n', 'hu', gs.undo_stage_hunk)
+    map('n', 'hR', gs.reset_buffer)
+    map('n', 'hp', gs.preview_hunk)
+    map('n', 'hb', function() gs.blame_line{full=true} end)
+    map('n', 'tb', gs.toggle_current_line_blame)
+    map('n', 'hd', gs.diffthis)
+    map('n', 'hD', function() gs.diffthis('~') end)
+    map('n', 'td', gs.toggle_deleted)
 
     -- Text object
     map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
